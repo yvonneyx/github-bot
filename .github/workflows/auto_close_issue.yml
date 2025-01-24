@@ -38,11 +38,11 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            ❌ This issue has been closed because it doesn’t seem to align with the project’s scope or requirements. If you believe this is a mistake, please open a new issue with more context so we can investigate further.
+            ❌ This issue has been closed because **it doesn’t seem to align with the project’s scope or requirements**. If you believe this is a mistake, please open a new issue with more context so we can investigate further.
 
             ---
 
-            ❌ 此 issue 已被关闭，因为它似乎与项目的范围或需求不符。如果您认为这是误判，请提交一个新的 issue 并提供更多背景信息，以便我们进一步核实。
+            ❌ 此 issue 已被关闭，因为它似乎**与项目的范围或需求不符**。如果您认为这是误判，请提交一个新的 issue 并提供更多背景信息，以便我们进一步核实。
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Close Won't Fix Issue
@@ -50,9 +50,9 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            🚫 After review, this issue has been closed as it does not align with the current roadmap. Thank you for your understanding and contributions.
+            🚫 After review, this issue has been closed as **it does not align with the current roadmap** Thank you for your understanding and contributions.
 
             ---
 
-            🚫 经过评估，此 issue 已被关闭，因为它不在当前项目的重点范围内。感谢您的理解与支持。
+            🚫 经过评估，此 issue 已被关闭，因为它**不在当前项目的重点范围内**。感谢您的理解与支持。
           token: ${{ secrets.GITHUB_TOKEN }}
