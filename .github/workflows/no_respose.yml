@@ -1,4 +1,4 @@
-name: No response
+name: No Response
 
 # `issues`.`closed`, `issue_comment`.`created`, and `scheduled` event types are required for this Action
 # to work properly.
