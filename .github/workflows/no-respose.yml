@@ -28,9 +28,13 @@ jobs:
           # Number of days of inactivity before an Issue is closed for lack of response
           daysUntilClose: 7
           # Label requiring a response
-          responseRequiredLabel: "status: waiting for author"
+          responseRequiredLabel: "waiting for author"
           # Label to add back when required label is removed
-          optionalFollowupLabel: "status: waiting for maintainer"
+          optionalFollowupLabel: "waiting for maintainer"
           # Comment to post when closing an Issue for lack of response. Set to `false` to disable
           closeComment: >
-            Since the issue is missing key information and has been inactive for 7 days, it has been automatically closed. If you wish to see the issue reopened, please provide the missing information.
+            🚫 This issue has been automatically closed due to inactivity and missing key information. If you would like this issue to be reopened, please provide the missing details and let us know by commenting below. We'll be happy to assist you further!
+            
+            ---
+
+            🚫 由于此问题缺少关键信息并且已经 7 天没有活动，因此它已被自动关闭。如果您希望重新打开此问题，请提供缺少的详细信息并在下方留言告诉我们。我们将很乐意继续为您提供帮助!

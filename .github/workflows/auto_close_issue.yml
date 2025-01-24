@@ -1,0 +1,56 @@
+name: Auto Close Issue
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  auto-close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Inactive Issue
+        if: ${{ github.event.label.name == 'stale' }}
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+            🕒 This issue has been closed because it has been inactive for a long time. If you still need help, feel free to open a new issue and provide more details so we can assist you better.
+
+            ---
+
+            🕒 这个 issue 已经被关闭，因为它已经很久没有活动了。如果你仍然需要帮助，请创建一个新的 issue 并提供更多详细信息，以便我们更好地帮助你。
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Close Duplicate Issue
+        if: ${{ github.event.label.name == 'duplicate' }}
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+            🔄 This issue has been closed because it is a duplicate. Please refer to the [original issue](#link-to-original-issue) for further details.
+
+            ---
+
+            🔄 这个 issue 已经被关闭，因为它是一个重复的 issue。请参考原始 issue 获取更多信息。
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Close Invalid Issue
+        if: ${{ github.event.label.name == 'invalid' }}
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+            ❌ This issue has been closed because it does not contain enough information to be actionable. If you still need help, please open a new issue and provide more details.
+
+            ---
+
+            ❌ 这个 issue 已经被关闭，因为它没有提供足够的信息。如果你仍然需要帮助，请创建一个新的 issue 并提供更多详细信息。
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Close Won't Fix Issue
+        if: ${{ github.event.label.name == 'wontfix' }}
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+            🚫 This issue has been reviewed by the AntV team, and it has been decided that it will not be on the roadmap. Thank you for your understanding!
+
+            ---
+
+            🚫 这个 issue 已经被 AntV 团队审查，并决定不会将其列入计划中。感谢你的理解！
+          token: ${{ secrets.GITHUB_TOKEN }}
