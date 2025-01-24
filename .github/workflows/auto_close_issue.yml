@@ -6,6 +6,8 @@ on:
 jobs:
   auto-close:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Close Inactive Issue
         if: ${{ github.event.label.name == 'stale' }}
