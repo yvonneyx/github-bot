@@ -33,6 +33,17 @@ jobs:
 
               - [创建议题](https://docs.github.com/zh/issues/tracking-your-work-with-issues/using-issues/creating-an-issue)
               - [基本撰写和格式语法](https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+              
+      - name: Check and Add Waiting for Author Label
+        if: ${{ github.event.label.name == 'need improvement' }}
+        run: |
+          if ! gh issue view "$NUMBER" --json labels --jq '.labels | map(.name) | contains(["waiting for author"])'; then
+            gh issue edit "$NUMBER" --add-label "waiting for author"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
 
       - name: Comment on Todos Issue
         if: ${{ github.event.label.name == 'todos' }}
@@ -47,14 +58,3 @@ jobs:
            ---
 
            🚀 此 issue 已被标记为 `todos` 并**被列入开发计划中**。我们将优先处理它，同时也会将进展同步在下方。
-
-      - name: Check and Add Waiting for Author Label
-        if: ${{ github.event.label.name == 'todos' }}
-        run: |
-          if ! gh issue view "$NUMBER" --json labels --jq '.labels | map(.name) | contains(["waiting for author"])'; then
-            gh issue edit "$NUMBER" --add-label "waiting for author"
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          NUMBER: ${{ github.event.issue.number }}
