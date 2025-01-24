@@ -14,11 +14,11 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            🕒 This issue has been closed because it has been inactive for a long time. If you still need help, feel free to open a new issue and provide more details so we can assist you better.
-
+            🕒 This issue has been closed due to **prolonged inactivity**. If this is still relevant, please open a new issue with updated details for further assistance.
+              
             ---
 
-            🕒 这个 issue 已经被关闭，因为它已经很久没有活动了。如果你仍然需要帮助，请创建一个新的 issue 并提供更多详细信息，以便我们更好地帮助你。
+            🕒 由于**长时间无更新**，此 issue 已被关闭。如果问题仍然存在，欢迎提交新的 issue 并提供最新信息，我们会尽力协助。
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Close Duplicate Issue
@@ -26,11 +26,11 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            🔄 This issue has been closed because it is a duplicate. Please refer to the [original issue](#link-to-original-issue) for further details.
+            🔄 This issue has been closed **as a duplicate**. Refer to the original issue (#link-to-original-issue) for more context.
 
             ---
 
-            🔄 这个 issue 已经被关闭，因为它是一个重复的 issue。请参考原始 issue 获取更多信息。
+            🔄 该 issue 因**重复**已被关闭。请参考原始 issue 获取更多信息。
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Close Invalid Issue
@@ -38,11 +38,11 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            ❌ This issue has been closed because it does not contain enough information to be actionable. If you still need help, please open a new issue and provide more details.
+            ❌ This issue has been closed because it doesn’t seem to align with the project’s scope or requirements. If you believe this is a mistake, please open a new issue with more context so we can investigate further.
 
             ---
 
-            ❌ 这个 issue 已经被关闭，因为它没有提供足够的信息。如果你仍然需要帮助，请创建一个新的 issue 并提供更多详细信息。
+            ❌ 此 issue 已被关闭，因为它似乎与项目的范围或需求不符。如果您认为这是误判，请提交一个新的 issue 并提供更多背景信息，以便我们进一步核实。
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Close Won't Fix Issue
@@ -50,9 +50,9 @@ jobs:
         uses: peter-evans/close-issue@v1
         with:
           comment: |
-            🚫 This issue has been reviewed by the AntV team, and it has been decided that it will not be on the roadmap. Thank you for your understanding!
+            🚫 After review, this issue has been closed as it does not align with the current roadmap. Thank you for your understanding and contributions.
 
             ---
 
-            🚫 这个 issue 已经被 AntV 团队审查，并决定不会将其列入计划中。感谢你的理解！
+            🚫 经过评估，此 issue 已被关闭，因为它不在当前项目的重点范围内。感谢您的理解与支持。
           token: ${{ secrets.GITHUB_TOKEN }}
